@@ -1,0 +1,20 @@
+<header class="header p-4">
+  <h1>To do list ✔</h1>
+</header>
+<div class="container h-100 d-flex align-items-center justify-content-center flex-column ">
+  <ion-item class="bg-warning w-100 mb-4">
+    <ion-label position="floating"> Nova tarefa: </ion-label>
+    <ion-input [(ngModel)]="novaTarefa"></ion-input>
+  </ion-item>
+
+
+  <ion-button [disabled]="!novaTarefa" expand="full" (click)="cadastrarTarefa()  "> Adicionar </ion-button>
+  <ion-list>
+    <ion-item-group *ngFor="let tarefa of tarefas; let id = index"> 
+      <ion-item-sliding (ionSwipe) = "removerTarefa(id)">
+        <ion-item>{{id}}-{{tarefa}}</ion-item>
+        <ion-item-options side="end"></ion-item-options>
+      </ion-item-sliding>
+    </ion-item-group>
+  </ion-list>
+</div>
